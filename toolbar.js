@@ -10,7 +10,7 @@ WAVES.Toolbar = {};
 	WAVES.Toolbar.level;
 	
 	// The number of milliseconds between each display update.
-	WAVES.Toolbar.updateSpeed = 200;
+	WAVES.Toolbar.updateSpeed = 0;
 	
 	// Used to tell if the text has changed.
 	var lastText;
@@ -42,6 +42,12 @@ WAVES.Toolbar = {};
 		
 		// Build the Toolbar and add it to the document.
 		buildToolbar( panelOrder ).appendTo( "body" );
+
+		//Bind close button.
+		$("#close-toolbar").on("click", function(e) {
+			e.preventDefault();
+			$("#waves-toolbar").hide();
+		});
 		
 		// Make the toolbar draggable.
 		makeDraggable();
@@ -108,7 +114,7 @@ WAVES.Toolbar = {};
 	function buildToolbar( panelOrder ) {
 		// Initialize each element.
 		var $toolbar = $( "<div id=waves-toolbar/>" );
-		var $titlebar = $( "<div id=waves-titlebar>WAVES Toolbar</div>" );
+		var $titlebar = $( "<div id=waves-titlebar>WAVES Toolbar<button id=close-toolbar class=pull-right title'Close Toolbar'>X</button></div>" );
 		var $panel = $( "<div id=waves-panel/>" );
 		var $display = $( "<div id=waves-display/>" );
 		var $inputContainer = $( "<div id=waves-input-container/>" );
@@ -219,6 +225,7 @@ WAVES.Toolbar = {};
 			
 				// Make sure that the display was updated before sending the Math to the outputs.
 				setTimeout( function () {
+					$(".waves-input").html(text);
 					$( ".waves-output" ).html( $( "#waves-display" ).html() );
 					$( "#waves-input" ).val( "" );
 					$( "#waves-display" ).html( "" );
@@ -261,14 +268,14 @@ WAVES.Toolbar = {};
 		// This is a separate function because of closure.
 		// Adds a keyboard shortcut to click the button.
 		function addShortcut( $button, shortcut ) {
-			var hotkey = shortcut.toLowerCase().replace( /\+/g, "_" ).replace( "ctrl_alt", "alt_ctrl" ).replace( "ctrl_shift_alt", "alt_ctrl_shift" ).replace( "enter", "return" );
-			$( "#waves-input" ).bind( "keydown." + hotkey, function () {
+			var hotkey = shortcut.toLowerCase().replace( /\+/g, "_" ).replace( "ctrl+alt", "alt+ctrl" ).replace( "ctrl+shift+alt", "alt+ctrl+shift" ).replace( "enter", "return" );
+			$( "#waves-input" ).bind( "keydown", hotkey, function () {
 				if( !$button.is( ":disabled" ) ) {
 					$button.click();
 				}
 			} );
 			if( hotkey !== "return" ) {
-				$( "#waves-toolbar" ).bind( "keydown." + hotkey, function () {
+				$( "#waves-toolbar" ).bind( "keydown", hotkey, function () {
 					if( !$button.is( ":disabled" ) ) {
 						$button.click();
 					}

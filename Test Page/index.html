@@ -4,12 +4,15 @@
 	<title>WAVES Test Page</title>
 	<link rel="stylesheet" href="page-style.css">
 	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 	<script type="text/javascript" src="../waves.js?config=WAVES-Themes/basic/config.json"></script>
 </head>
 <body>
 	<h1>WAVES Token Toolbar Test Page</h1>
+	<a href="#" onclick="javascript:$('#waves-toolbar').show()">Show Toolbar</a>
 	<div id="math-display" class="waves-output"></div>
 	<div id="xml-display" class="waves-xml-output"></div>
+	<div class="waves-input"></div>
 	<div class="math">
 		<m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="block" mathsize="big">
 			<m:mi> n </m:mi>

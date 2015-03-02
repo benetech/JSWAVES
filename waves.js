@@ -32,11 +32,6 @@ var WAVES = {};
 	} )();
 	
 	include(
-		// MathJax      (http://www.mathjax.org/)
-		"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML",
-		
-		// jQuery       (http://jquery.com/)
-		"http://code.jquery.com/jquery-1.10.1.min.js",
 		
 		// jQuery Hotkeys (https://github.com/tzuryby/jquery.hotkeys)
 		WAVES.dir + "jquery.hotkeys.js",

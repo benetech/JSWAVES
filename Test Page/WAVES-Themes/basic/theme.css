@@ -114,3 +114,11 @@
 	opacity: 0.5;
 	filter: alpha( opacity = 40 );
 }
+
+.pull-right {
+	float: right;
+}
+
+.waves-input {
+	display: none;
+}
